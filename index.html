@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Club de Lectura Oviedo — Cronograma">
+<meta property="og:description" content="Consulta las fechas y actividades del Club de Lectura Oviedo. Agrega los encuentros a tu calendario.">
+<meta property="og:type" content="website">
 <title>Cronograma · Club de Lectura Oviedo</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
@@ -43,9 +46,10 @@ body{
 h1,h2,h3,h4{font-family:'Fraunces',serif;margin:0;}
 p{margin:0;}
 button{font-family:inherit;cursor:pointer;}
+a{color:inherit;text-decoration:none;}
 ::selection{background:var(--gold);color:var(--white);}
 
-/* ---------- HEADER ---------- */
+/* ---------- HERO ---------- */
 .hero{
   background:linear-gradient(160deg,var(--primary) 0%, var(--dark) 100%);
   color:var(--white);
@@ -58,9 +62,6 @@ button{font-family:inherit;cursor:pointer;}
   position:absolute; right:-60px; top:-60px;
   width:260px;height:260px;border-radius:50%;
   background:radial-gradient(circle,rgba(255,255,255,0.06),transparent 70%);
-}
-.hero-top{
-  display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
 }
 .brand{display:flex;align-items:center;gap:14px;}
 .brand img{height:38px;filter:brightness(0) invert(1);}
@@ -89,29 +90,29 @@ button{font-family:inherit;cursor:pointer;}
 }
 .hero-meta b{color:var(--white);font-weight:600;}
 
-/* ---------- TOOLBAR ---------- */
-.toolbar{
-  max-width:1240px;margin:-26px auto 0;padding:0 5vw;
-  position:relative;z-index:5;
+/* ---------- NEXT EVENT BANNER ---------- */
+.next-event{max-width:1240px;margin:-26px auto 0;padding:0 5vw;position:relative;z-index:5;}
+.ne-inner{
+  --ne-color:var(--gold);
+  background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-md);
+  padding:16px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  border-left:6px solid var(--ne-color);
 }
+.ne-ico{font-size:24px;flex-shrink:0;}
+.ne-text{flex:1;min-width:220px;}
+.ne-text b{display:block;font-family:'Fraunces',serif;font-size:15px;color:var(--dark);margin-bottom:2px;}
+.ne-text span{font-size:13px;color:var(--muted);}
+
+/* ---------- TOOLBAR ---------- */
+.toolbar{max-width:1240px;margin:16px auto 0;padding:0 5vw;}
 .toolbar-inner{
-  background:var(--white);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow-md);
-  padding:14px 18px;
-  display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+  background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-sm);
+  padding:12px 16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;
 }
 .btn{
-  border:1px solid var(--line);
-  background:var(--white);
-  color:var(--ink);
-  padding:9px 15px;
-  border-radius:999px;
-  font-size:13.5px;
-  font-weight:600;
-  display:inline-flex;align-items:center;gap:7px;
-  transition:all .15s ease;
-  white-space:nowrap;
+  border:1px solid var(--line);background:var(--white);color:var(--ink);
+  padding:9px 15px;border-radius:999px;font-size:13.5px;font-weight:600;
+  display:inline-flex;align-items:center;gap:7px;transition:all .15s ease;white-space:nowrap;
 }
 .btn:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px);}
 .btn-primary{background:var(--primary);border-color:var(--primary);color:var(--white);}
@@ -119,53 +120,36 @@ button{font-family:inherit;cursor:pointer;}
 .btn-gold{background:var(--gold);border-color:var(--gold);color:var(--white);}
 .btn-gold:hover{background:#B3831F;color:var(--white);}
 .btn-ghost{background:transparent;border-color:transparent;color:var(--muted);}
-.btn-ghost:hover{color:var(--coral);border-color:transparent;background:rgba(226,89,63,0.08);}
-.btn.danger{color:var(--coral);}
+.btn-ghost:hover{color:var(--coral);background:rgba(226,89,63,0.08);}
+.btn-sm{padding:6px 12px;font-size:12px;}
 .toolbar-spacer{flex:1;}
-.toolbar-divider{width:1px;height:24px;background:var(--line);margin:0 2px;}
-
-/* ---------- TABS (bookmark ribbons) ---------- */
-.tabs{
-  max-width:1240px;margin:26px auto 0;padding:0 5vw;
-  display:flex;gap:10px;flex-wrap:wrap;
+.filter-select{
+  border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:600;
+  color:var(--primary);background:var(--white);font-family:inherit;
 }
+
+/* ---------- TABS ---------- */
+.tabs{max-width:1240px;margin:26px auto 0;padding:0 5vw;display:flex;gap:10px;flex-wrap:wrap;}
 .tab{
-  position:relative;
-  border:none;
-  padding:13px 22px 17px;
-  font-family:'Fraunces',serif;
-  font-weight:600;
-  font-size:14.5px;
-  color:var(--white);
-  background:var(--muted);
+  position:relative;border:none;padding:13px 22px 17px;font-family:'Fraunces',serif;font-weight:600;font-size:14.5px;
+  color:var(--white);background:var(--muted);
   clip-path:polygon(0 0,100% 0,100% 78%,50% 100%,0 78%);
-  opacity:0.55;
-  transform:translateY(0);
-  transition:all .18s ease;
+  opacity:0.55;transition:all .18s ease;
 }
 .tab:hover{opacity:0.85;transform:translateY(2px);}
 .tab.active{opacity:1;transform:translateY(4px);box-shadow:var(--shadow-sm);}
-.tab[data-view="gantt"]{background:var(--c-primer);}
-.tab[data-view="tabla"]{background:var(--c-inicial);}
 .tab[data-view="timeline"]{background:var(--c-guia);}
+.tab[data-view="tabla"]{background:var(--c-inicial);}
 .tab[data-view="calendario"]{background:var(--c-virtual);color:var(--ink);}
+.tab[data-view="gantt"]{background:var(--c-primer);}
 .tab[data-view="kanban"]{background:var(--c-segundo);}
-.tab[data-view="journey"]{background:var(--coral);}
 
 /* ---------- VIEW CONTAINER ---------- */
-.view-wrap{
-  max-width:1240px;margin:0 auto;padding:26px 5vw 10px;
-}
+.view-wrap{max-width:1240px;margin:0 auto;padding:26px 5vw 10px;}
 .view{display:none;}
 .view.active{display:block;animation:fadein .25s ease;}
 @keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-.view-card{
-  background:var(--white);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow-sm);
-  padding:26px;
-  overflow-x:auto;
-}
+.view-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:26px;overflow-x:auto;}
 .view-heading{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;margin-bottom:20px;}
 .view-heading h2{font-size:22px;color:var(--primary);}
 .view-heading .hint{font-size:12.5px;color:var(--muted);}
@@ -206,7 +190,6 @@ button{font-family:inherit;cursor:pointer;}
   position:absolute;right:-5px;top:50%;transform:translateY(-50%) rotate(45deg);
   width:10px;height:10px;border-radius:2px;filter:brightness(0.8);
 }
-.gantt-toolbar-row{display:flex;justify-content:flex-end;margin-bottom:10px;}
 
 /* ---------- TABLE ---------- */
 table.crono{border-collapse:separate;border-spacing:0;width:100%;min-width:920px;}
@@ -216,10 +199,7 @@ table.crono th{
 }
 table.crono th:first-child{border-radius:10px 0 0 10px;}
 table.crono th:last-child{border-radius:0 10px 10px 0;}
-table.crono td{
-  vertical-align:top;padding:12px;border-bottom:8px solid var(--cream);
-  font-size:13px;
-}
+table.crono td{vertical-align:top;padding:12px;border-bottom:8px solid var(--cream);font-size:13px;}
 table.crono td.book-cell{font-family:'Fraunces',serif;font-weight:600;color:var(--primary);font-size:14px;background:var(--white);width:160px;}
 table.crono td.book-cell small{display:block;font-family:'Inter',sans-serif;font-weight:400;color:var(--muted);font-size:11.5px;margin-top:3px;}
 .phase-cell{border-radius:10px;padding:12px 14px;cursor:pointer;position:relative;transition:filter .15s;}
@@ -229,11 +209,7 @@ table.crono td.book-cell small{display:block;font-family:'Inter',sans-serif;font
 .phase-cell li{margin-bottom:2px;line-height:1.35;}
 .phase-cell .flag{color:var(--gold);font-size:12px;font-weight:700;cursor:help;}
 .loc-tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--muted);margin-top:4px;}
-.phase-empty{
-  border-radius:10px;border:1.5px dashed var(--line);
-  color:var(--muted);text-align:center;padding:16px 10px;font-size:12px;cursor:pointer;
-}
-.phase-empty:hover{border-color:var(--gold);color:var(--gold);}
+.phase-empty{border-radius:10px;border:1.5px dashed var(--line);color:var(--muted);text-align:center;padding:16px 10px;font-size:12px;}
 
 /* ---------- TIMELINE ---------- */
 .timeline{position:relative;padding-left:26px;}
@@ -243,10 +219,7 @@ table.crono td.book-cell small{display:block;font-family:'Inter',sans-serif;font
   content:"";position:absolute;left:-26px;top:4px;width:14px;height:14px;border-radius:50%;
   border:3px solid var(--white);box-shadow:0 0 0 2px var(--dot-color,var(--primary));background:var(--dot-color,var(--primary));
 }
-.timeline-card{
-  background:var(--soft-color,var(--cream));border-radius:12px;padding:14px 18px;
-  border-left:4px solid var(--dot-color,var(--primary));transition:transform .15s;
-}
+.timeline-card{background:var(--soft-color,var(--cream));border-radius:12px;padding:14px 18px;border-left:4px solid var(--dot-color,var(--primary));transition:transform .15s;}
 .timeline-item:hover .timeline-card{transform:translateX(4px);}
 .timeline-date{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;}
 .timeline-title{font-family:'Fraunces',serif;font-size:16px;font-weight:600;color:var(--dark);margin-top:2px;}
@@ -264,11 +237,10 @@ table.crono td.book-cell small{display:block;font-family:'Inter',sans-serif;font
 .day-cell{min-height:64px;border-top:1px solid var(--line);border-left:1px solid var(--line);padding:4px;position:relative;}
 .day-cell:nth-child(7n+1){border-left:none;}
 .day-cell.empty{background:#FBFAF6;}
+.day-cell.today{background:var(--c-virtual-soft);box-shadow:inset 0 0 0 2px var(--gold);}
 .day-num{font-size:10.5px;color:var(--muted);}
-.chip{
-  margin-top:3px;padding:2px 6px;border-radius:6px;font-size:9.5px;font-weight:700;color:var(--white);
-  cursor:pointer;line-height:1.3;display:block;white-space:normal;
-}
+.day-cell.today .day-num{color:var(--gold);font-weight:800;}
+.chip{margin-top:3px;padding:2px 6px;border-radius:6px;font-size:9.5px;font-weight:700;color:var(--white);cursor:pointer;line-height:1.3;display:block;white-space:normal;}
 .chip:hover{filter:brightness(1.08);}
 .chip small{display:block;font-weight:400;font-size:9px;opacity:.9;}
 
@@ -278,62 +250,15 @@ table.crono td.book-cell small{display:block;font-family:'Inter',sans-serif;font
 .kanban-col-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding:0 4px;}
 .kanban-col-head i{width:10px;height:10px;border-radius:3px;}
 .kanban-col-head span{font-family:'Fraunces',serif;font-weight:600;font-size:13.5px;color:var(--dark);}
-.kanban-card{
-  background:var(--white);border-radius:10px;padding:12px;margin-bottom:10px;
-  box-shadow:var(--shadow-sm);cursor:pointer;border-top:3px solid var(--dot-color,var(--primary));
-  transition:transform .15s;
-}
+.kanban-card{background:var(--white);border-radius:10px;padding:12px;margin-bottom:10px;box-shadow:var(--shadow-sm);cursor:pointer;border-top:3px solid var(--dot-color,var(--primary));transition:transform .15s;}
 .kanban-card:hover{transform:translateY(-2px);}
 .kanban-card .kdate{font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;}
 .kanban-card .ktitle{font-family:'Fraunces',serif;font-size:13.5px;font-weight:600;color:var(--dark);margin-top:2px;}
-.kanban-add{width:100%;padding:9px;border-radius:8px;border:1.5px dashed var(--line);background:transparent;color:var(--muted);font-size:12px;}
-.kanban-add:hover{border-color:var(--gold);color:var(--gold);}
 
-/* ---------- JOURNEY (winding path) ---------- */
-.journey-note{
-  background:var(--c-virtual-soft);border:1px dashed var(--gold);border-radius:12px;
-  padding:14px 18px;font-size:13px;color:var(--dark);margin-bottom:28px;display:flex;gap:10px;align-items:flex-start;
-}
-.journey-note b{font-family:'Fraunces',serif;}
-.j-path-wrap{position:relative;padding:10px 10px 30px;}
-.j-svg{position:absolute;top:0;left:0;pointer-events:none;z-index:0;}
-.j-svg path{fill:none;stroke:var(--line);stroke-width:2.5;stroke-dasharray:6 8;stroke-linecap:round;stroke-linejoin:round;}
-.j-row{display:flex;align-items:center;gap:28px;margin-bottom:44px;position:relative;z-index:1;}
-.j-row.reverse{flex-direction:row-reverse;}
-.j-startend{
-  position:absolute;top:-26px;font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--primary);
-}
-.j-startend.end{top:auto;bottom:-26px;right:0;}
-.j-badge{
-  --jpct:0;--jcolor:var(--primary);
-  position:relative;width:90px;height:90px;border-radius:50%;flex-shrink:0;cursor:default;
-  background:conic-gradient(var(--jcolor) calc(var(--jpct)*1%), var(--line) 0);
-  display:flex;align-items:center;justify-content:center;
-}
-.j-badge-inner{
-  position:absolute;inset:7px;border-radius:50%;background:var(--white);box-shadow:inset 0 0 0 1px rgba(0,0,0,0.03);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  font-family:'Fraunces',serif;font-weight:700;font-size:15px;text-transform:capitalize;color:var(--jcolor);
-}
-.j-badge-inner small{font-family:'Inter',sans-serif;font-weight:600;color:var(--muted);font-size:10px;margin-top:1px;}
-.j-events{position:relative;display:flex;flex-wrap:wrap;gap:22px 26px;flex:1;}
-.j-events::before{content:"";position:absolute;left:0;right:0;top:26px;border-top:2px dashed var(--line);z-index:0;}
-.j-event{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;z-index:1;width:104px;text-align:center;cursor:pointer;}
-.j-event-icon{
-  width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:22px;box-shadow:var(--shadow-sm);border:3px solid var(--white);transition:transform .15s ease;
-}
-.j-event:hover .j-event-icon{transform:scale(1.1) translateY(-2px);}
-.j-event-date{font-size:10.5px;font-weight:700;color:var(--dark);margin-top:2px;}
-.j-event-title{font-size:10.5px;color:var(--muted);line-height:1.3;}
-@media(max-width:760px){
-  .j-row, .j-row.reverse{flex-direction:column;align-items:flex-start;gap:16px;}
-  .j-startend, .j-startend.end{position:static;display:block;margin-bottom:6px;}
-  .j-svg{display:none;}
-}
-
-/* ---------- VIEW CARD (read-only popup) ---------- */
-.vc-card{max-width:400px;padding:0;overflow:hidden;}
+/* ---------- VIEW CARD ---------- */
+.modal-overlay{position:fixed;inset:0;background:rgba(18,49,40,0.55);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px;}
+.modal-overlay.hidden{display:none;}
+.vc-card{background:var(--white);border-radius:16px;max-width:420px;width:100%;box-shadow:var(--shadow-md);max-height:88vh;overflow-y:auto;padding:0;}
 .vc-colorbar{height:8px;width:100%;}
 .vc-body{padding:24px 26px 22px;}
 .vc-book{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-weight:700;margin-bottom:4px;}
@@ -343,54 +268,15 @@ table.crono td.book-cell small{display:block;font-family:'Inter',sans-serif;font
 .vc-details ul{margin:4px 0 0;padding-left:18px;}
 .vc-details li{margin-bottom:3px;}
 .muted-note{color:var(--muted);font-size:13px;font-style:italic;}
-.vc-actions{display:flex;gap:10px;padding:16px 26px;background:var(--cream);}
+.vc-actions{display:flex;gap:8px;padding:16px 26px;background:var(--cream);flex-wrap:wrap;}
 
-/* ---------- MODAL ---------- */
-.modal-overlay{
-  position:fixed;inset:0;background:rgba(18,49,40,0.55);backdrop-filter:blur(2px);
-  display:flex;align-items:center;justify-content:center;z-index:100;padding:20px;
-}
-.modal-overlay.hidden{display:none;}
-.modal{
-  background:var(--white);border-radius:16px;max-width:460px;width:100%;
-  padding:28px;box-shadow:var(--shadow-md);max-height:88vh;overflow-y:auto;
-}
-.modal h3{color:var(--primary);font-size:20px;margin-bottom:18px;}
-.field{margin-bottom:14px;display:flex;flex-direction:column;gap:6px;}
-.field label{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
-.field input, .field select, .field textarea{
-  border:1.5px solid var(--line);border-radius:8px;padding:9px 11px;font-family:'Inter',sans-serif;font-size:13.5px;color:var(--ink);
-  background:var(--white);
-}
-.field input:focus, .field select:focus, .field textarea:focus{outline:none;border-color:var(--primary);}
-.field textarea{resize:vertical;min-height:70px;}
-.modal-actions{display:flex;align-items:center;margin-top:20px;gap:8px;}
-.modal-actions .spacer{flex:1;}
-.field-row{display:flex;gap:10px;}
-.field-row .field{flex:1;}
-.book-list-item{display:flex;gap:8px;align-items:center;margin-bottom:10px;}
-.book-list-item input{flex:1;}
-.book-list-item .icon-btn{border:none;background:transparent;color:var(--muted);font-size:15px;padding:4px 6px;border-radius:6px;}
-.book-list-item .icon-btn:hover{color:var(--coral);background:rgba(226,89,63,0.08);}
-.book-event-row{display:flex;gap:8px;margin-bottom:8px;align-items:center;}
-.book-event-row select{flex:1.3;}
-.book-event-row input[type="text"]{flex:1.3;}
-.book-event-row input[type="date"]{flex:1;}
-.book-event-row .be-custom{flex:1.3;}
-
-/* ---------- FOOTER ---------- */
+/* ---------- FOOTER / TOAST ---------- */
 .footer{max-width:1240px;margin:34px auto 0;padding:0 5vw;color:var(--muted);font-size:12px;text-align:center;}
-
-/* ---------- TOAST ---------- */
-.toast{
-  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
-  background:var(--dark);color:var(--white);padding:11px 20px;border-radius:999px;font-size:13px;font-weight:600;
-  box-shadow:var(--shadow-md);opacity:0;pointer-events:none;transition:all .25s ease;z-index:200;
-}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:var(--white);padding:11px 20px;border-radius:999px;font-size:13px;font-weight:600;box-shadow:var(--shadow-md);opacity:0;pointer-events:none;transition:all .25s ease;z-index:200;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
 @media print{
-  .toolbar, .tabs, .hero-meta, .modal-overlay, .footer{display:none !important;}
+  .toolbar, .tabs, .next-event, .modal-overlay, .footer{display:none !important;}
   .view{display:block !important;}
   .view:not(.active){display:none !important;}
   body{padding-bottom:0;}
@@ -404,12 +290,10 @@ table.crono td.book-cell small{display:block;font-family:'Inter',sans-serif;font
 <body>
 
 <div class="hero">
-  <div class="hero-top">
-    <div class="brand">
-      <img src="data:image/png;base64,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" alt="Oviedo">
-      <div class="brand-div"></div>
-      <div class="brand-sub">Programación de categoría</div>
-    </div>
+  <div class="brand">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPMAAABLCAYAAAClb7EnAAAACXBIWXMAAAsSAAALEgHS3X78AAAOeUlEQVR4nO1dvW4ruRWmkjRBCnlTpbuu0lr7BNaFCqWzFnkAa59gHSBFuvg+wSpPYPkJVm6CqBBi1SlWBtJHKgOksKqUCuh8c5c+OodDcjg/0j0fYOxdaTTDIc/H8/GQPOwdDgejUChOHz/TNlQozgNKZoXiTFAbmXvj0aUaiULRHGobM/fGo4Ux5sYYszbGzI0xi8Ny9aptq1DUgzpl9gX+e22MeTDGbHvj0X1vPLoo+Z1CoUhAnZ75GUSmeDHGTA/L1UYbTNF1WAdEirg9LFfzLhb7FzXeWyLzlf2uNx4NldCKE8CfSRGLYWPnUKfM9hG1D0Kr5FYoMqFOMlvPvPd8bwk9ox9iXL1QoisUcaiNzIhcH5GV4NadwuqNR3PIGhsFp2MVhULhQd2LRmYl3tlian4KNNzis09KZoUiDnUGwN68c288smT9wXPZEN75Dv//tQbGFIp41L6c87Bc2cUj33ouKYhsx9B/UCIrFGloZG025uUkQn+A1N4dlquyMbZCoRDQ2EYLEPprLBqh6OsYWaGohkZ3TVkJfViuBlZOk8DYvqurahSKU0ErWyCtnD4sVxeQ3i+Yk1YoFBVQOZqNSPTEGDNAMOsS42AXa/x7gz+7vvUZ3pj1yHa5p3PPAT6my0NtR/Dq3Nfec6sGkQe98Wjm1P0bDsvV8IRf6ayRRGaszpoiCk2Jy6Eg4bVzDwOSWxL+A+Pm39qpKqzfDsEVc19L8JnK9iwYCOvrFR1ENJmxuKOYSqqK6xqMxRL8oSgnpsYUirNHMJkhpxcRXrNtWMXwQ288esKWS02MoDhrBJG5Nx4NEKTivPEeJLffb7hFHxj//skYM06ozP8aY/5qjPkjHQ9D7g/wN8SaboobZ8ulElpxtiglMwizYIi8s3PDvrEpSHxfUUr/0hjze/vXG48e8cw3UoOcz/ibQT1MmWHAFa4ZyI9RMNDVeCeE0kwjQsaQR4xHWU8HUs0ET1mg8Og2N1ix5XGCP9/vDDZizEqezw0JPh2WK12coghGbzyiBFl3NaLvJTM2STyQjx8Py9XU85s7eGMpQPaWqaHEo4dEy3cYC7Nz1LjHM0No3cjxBQMd/RBTni4p36ZMMb352T7Ogswgw5aQ8umwXE0818+cbYwUj/CmUUTqjUcTkFqS6qK3RZk2pEOotTEwtLhwJP1bZyN1Op77DKBSXDzH3kcoH33/OTc/j878XcrkHMoG73bhlGOLv01dcQ08cxY45HuB8nyui8xoB+PUgbXT1yrt6yOzJdD3zkdWFl9yle3xggae+K6qNwSpZ4KnFtUCKu3v5OOPVUnBlG0aMDx4BHFKn4170q2jYmcaUdZXRjV9JbTr0RDrsFz1Ep97CcU2KZnWzL5OANOUNJdXCB4Z55RMZtjiXYCdPKEO4hyAh8xbQhzWA3qIvIcMzjrP62kYH6GpUXqHChFlucQKttgAX9B0WQzxQhDbQeQgM+zDttl3kcW1w6hJBicw96jFFEST2Qkix9rJGnUQ1N7s2mz0IC6R954UQDOGyLZ3HdSxYAMdykcmg8kt1AQH2gndVs0xBtm2SYzU3wQmNOTqr4pn5n5b26Iap6OPJbKB/f0IqZ/6/PvMRE4pwwBDiBQ7uUa++aBZGGmjBW30uSDDJkxlWWkyrHONNOTHkNlO+T334rieXptMCnhkad49FFcBhD5pMmdaZPTgjC+DATuQpPUam3w+Yluu/e83sN2yNFcxZZCmdWMQnMlWmmc+IrNQUPr5i2/KKies/EKvTUk1YwI8xTu4MYBJhfzHc08DPRWbPpyNJwNhnHSFe7EExZTdnjzrxtZ9bB2j46Vlfqox4ORbX/ACI3+F1yo21EjjaVsPbLzGA05J7mGfUrsvMq90nHtmY56cDULGWfzE2UkfZfJ2akdkxsu8k9jCuGVKKn4fo+9zwCG0Ow68xmovGjxYEDKnBjGmgpGuMQ5mFYnHSG6E8rrlpuonpSNqzCujo+eGPNJ04sL5HTcj0sf9giLp8MpcG/mI/AbbflACdBYkCrgHR8wX8ITaSVEHkp1Idv0ZnMymRi41OG2sWRvbDzEuX5OPj8ZZKNvO+agfOhYh4IzUejjv0ALfcUMDI9yzQC6p3aTE5jbi7BFHEY3ROgIEJh+5e0bEObhx9jo0Qg6HVHUKjvv9S9kQ1H6HBB6cnXjLxJGZHsXKrbUeRATImgB9ScnY6btEHTuL92aj9iG/h5Fw195IR+Cis6LjuJuYAF7TElt4x+DNLiD0jnzcj+jEONUVZZ8gPi1DENCWnDKIUa7cu177jkoO8cycxD7y3m1uYkBvT70u16D0XWI9M+vdYt4dQ5Yn5iuf7Oc8aEyUt0mJTTt6g2SNsc/jyBdK5qMON3FmJXUtAlfOxxjlims5hSLWQUjaIK4AoVK8SdAyhJA59kB47p4p78795izIXHMdlXa+gZ14KFLJ3IqdcGSmaWI4MlOJ14W1ziFEpR40lszctFeuHl8siyC1r3ySqwCMu0mJzREumhRMjMNUCEil2mdqDIhrl5QycPUmdmgcmUPmxOiqoC7k3aJliCVqCLhtoNEQ6qtsUUFqIKzpueWQTjQU3HrxslkI7vumh4BH01opHBE6XLFDy5GdM9ske5cheMEqnVhsR5AqtZsm8xEqrIM/l+SMXGQ6FHSmRkQOMndlO2Hd5cjt6aMMNUVqC8GoOiV2brRK5oybcRqp7xxk7kr2xi8hi0is1OY89yklONTMMBHgyPxOEpz5oeenlhMsVmq3LrEroo64x9mCIzM1cK53fKfjQ6KqDaB0sUvgHHpnESO1T11iY9ksF0jS008EcBst6Hat0CmetoMVtJyc0VKVcYrZOqW12nSRRWckNjZdxEDacMAttlEAEpldSHNmbmUPO3BeFPW6IXN0p5gLjCPzlCFzlyR2SpYPDnrkrweczKYkCFlR02qCM4zraSCOI2rINZ1GiNQ+gyg2h0eV2H5wZKYGzkWraaVetxwoo53JCzVcZofU7oSNuyyqfepRbIpPOdI8nTuOyAwDpxHtIXMNncyulGiuIo6yWDK3C5Hhp4KyqPapR7ELWDv8RnOdh0HKNEIT9E0Y46cJyqYVMnckA4qAjiG5coQQ/iQgZCAppPZFByX2x4Tf1JZ291zhI7ObhG3CbKCnaXis1B60kGCeyq8dLYMwpj718ZcU1eYClq16ZR3rNgN2BRgTZPkgSG06VeDLmFEXuE6GghL+5QwOZZek9rlI7NbRkfUTwfAt56QGwAUg6FTBbZMVgIUFIRlPQgh/UpCi2mcYxW4TZ0NmavBHuaYhn2ggrJG5QCf5m4ujrB9MDnCTSObcnjyHoYR43C/NK3dRcTUy0yOSmUnFYwQZTSONN8g5VTfo4XR7IeEZ/ewxxVMFJmmIQXLmRwcnQeaG5SrXTqkbNnKRsEra3uCyl+2aokS4ow0jeOd5nfPO8Lb0lISj7KC4jga+ckrspEYSjDt6z6sgtV20IbG557VN5tTnp3YCR3vVK/CBy3LKwktmJkNhX/B+U/KQfl3jUueUABc7Qd7Tz9YVI6tHG8UT0/Vyv0mVhz7P24ZXDtngUhvQoSelWGKQqjBD8uaVIjafWch+Zu6cJhrZ3gpyO+v42Tm7iPZWR2lcsbifes6qiw+kwwBiwRlJaidzCmRuekERV5dR7QTyp8pj7vm5cp2nkxnemUrABRMMmzGe67sqB38x4A6p+wv1tsI5QznW9rJGEpnD+lI4zCyJeB6p3UoU27N2vMn1+1xdxiTRNxUDuexy20g7uRA6IFHxhmYaoYGvvmd9MB0vPFQltH0x4WhOO198R69lyrbPMQcOQ+WSs8c0PHdt1Xlvri3aDHxxz56FGnMGB8B1KMEHsEHVlZ2hLAKLlqgDjB16zrgEkr5FWUFkhkf7RD6+BsHc615BaFqRD/TaUDjS+ojIdBziXEsjxcGnKQSAe4/bsvdzOiTOSKoOR7pGZm44U5x66ctZdokzoZPtxfxkh1yd2jJspM7CKrreeLTItGWTe74denqDwx7HZcqGieJh68KDNozMPTq4HDKXG9tKh2ZJz5sIJy7azuLdqYCeQ9+zHKxOykUPoi+wA4kokSbMQXsFkk/iJ2VyD2YXD1CPvGfyYeuIl3DnMu+dOirarzgpk9ZRpbYT7NWFOywcBKaZDm4vrv4An51MJNs6LFfeIJ60NlsCdzreLcj7maQ4nXHIELroGWeYSmK9JXrvmecUvSEh8gAVQyvhpaatcxOhs/oAAw49XDyL/AfctdpdWChyD3uhZOqjnCGHoN/iKNfUzo478tdF3ckop+BLVTsxIQG0qOycHhldkPTOuXYjnHrYh4yxR2fe0031kBj/Eoi8dokMSWKN5keOyHVNieDdqpJwj3fJtTFlIfy7FaCNpFMvY1BFbhc2mJrbfY9D2bkzn0Kev634/ALfhthJlMz+/KP/e8K5IGF2+G6Os26LQ9l9AYX/GGN+boz5ynPNp2JfK54/9UjXI+9dB6A+Uk7G30HJZN1hBqn9nENim4oy27lHEZCM9YLZ6shz7rMPa5znvME9inFs9LDIoxzLEFUHSWQ24Y20wwS6LcxvjDG/SzD8fxtj/obx1SBgbJN9jOyDc7A43fTBwdbHfeg5wQllmYPMWe6fg8zOvSaQ3mVzt4UzEIdhqYAKvBPkf/HsZziio2lI1G+S7E+wk+g6SCazU8g7Zp10G9ihJ21NYqIHHjJrerfYbF/rXm88f5uLBIj60uW7lRbegFADZhVcoSoa3Q8PdRWcCMF2SlVtDO00YJaZVrKTymQ273sd7sT8ulFse8zekysUp4QsZC4AUhfhde4oUQ7/RI/0K2PMrwOX0H2e3mjTEysUXUJWMlNAUhVSohhnbCCpXiU5ARlygb9CjhVjmO0ZZAlRKLKjVjIrFIrmkOMUSIVC0QEomRWKM4GSWaE4EyiZFYpzgDHmf/84e1CkXYhFAAAAAElFTkSuQmCC" alt="Oviedo">
+    <div class="brand-div"></div>
+    <div class="brand-sub">Programación de categoría</div>
   </div>
   <h1 class="hero-title">Club de Lectura Oviedo</h1>
   <p class="hero-quote">"Nos reunimos para leer, conversamos para disfrutar."</p>
@@ -420,43 +304,37 @@ table.crono td.book-cell small{display:block;font-family:'Inter',sans-serif;font
   </div>
 </div>
 
+<div class="next-event" id="nextEventBanner"></div>
+
 <div class="toolbar">
   <div class="toolbar-inner">
-    <button class="btn btn-primary" id="btnAddEvent">+ Agregar evento</button>
-    <button class="btn" id="btnAddBook">+ Agregar libro</button>
-    <button class="btn" id="btnManageBooks">Gestionar libros</button>
-    <button class="btn" id="btnEditAllText">✎ Editar todo el texto</button>
-    <div class="toolbar-divider"></div>
-    <button class="btn" id="btnExport">Exportar JSON</button>
-    <button class="btn" id="btnImport">Importar JSON</button>
-    <input type="file" id="fileImport" accept="application/json" style="display:none">
-    <button class="btn" id="btnPrint">Imprimir / PDF</button>
+    <select class="filter-select" id="filterSelect"></select>
     <div class="toolbar-spacer"></div>
-    <button class="btn btn-ghost danger" id="btnReset">Reiniciar datos originales</button>
+    <button class="btn btn-gold" id="btnSubscribeAll">📆 Suscribirme a todo el calendario</button>
+    <button class="btn" id="btnPrint">🖨️ Imprimir</button>
   </div>
 </div>
 
 <div class="tabs">
-  <button class="tab active" data-view="gantt">Gantt</button>
+  <button class="tab active" data-view="timeline">Línea de tiempo</button>
   <button class="tab" data-view="tabla">Tabla</button>
-  <button class="tab" data-view="timeline">Línea de tiempo</button>
   <button class="tab" data-view="calendario">Calendario</button>
+  <button class="tab" data-view="gantt">Gantt</button>
   <button class="tab" data-view="kanban">Kanban</button>
-  <button class="tab" data-view="journey">Journey</button>
 </div>
 
 <div class="view-wrap">
 
-  <div class="view active" data-view="gantt">
+  <div class="view active" data-view="timeline">
     <div class="view-card">
       <div class="view-heading">
         <div>
-          <h2>Vista Gantt</h2>
-          <div class="hint">Cada punto es un hito del ciclo de lectura. Haz clic sobre un punto para editarlo.</div>
+          <h2>Línea de tiempo</h2>
+          <div class="hint">Todos los hitos del club, en orden cronológico. Haz clic para ver el detalle.</div>
         </div>
-        <div class="legend" id="legendGantt"></div>
+        <button class="btn btn-sm" onclick="downloadView('timeline')">📷 Descargar imagen</button>
       </div>
-      <div class="gantt-scroll" id="ganttWrap"></div>
+      <div id="timelineWrap"></div>
     </div>
   </div>
 
@@ -465,22 +343,11 @@ table.crono td.book-cell small{display:block;font-family:'Inter',sans-serif;font
       <div class="view-heading">
         <div>
           <h2>Vista de tabla</h2>
-          <div class="hint">Haz clic en una celda para editar el evento; las casillas punteadas crean uno nuevo.</div>
+          <div class="hint">Haz clic en una celda para ver el detalle del encuentro.</div>
         </div>
+        <button class="btn btn-sm" onclick="downloadView('tabla')">📷 Descargar imagen</button>
       </div>
       <div id="tableWrap"></div>
-    </div>
-  </div>
-
-  <div class="view" data-view="timeline">
-    <div class="view-card">
-      <div class="view-heading">
-        <div>
-          <h2>Línea de tiempo</h2>
-          <div class="hint">Todos los hitos del club, en orden cronológico.</div>
-        </div>
-      </div>
-      <div id="timelineWrap"></div>
     </div>
   </div>
 
@@ -489,10 +356,28 @@ table.crono td.book-cell small{display:block;font-family:'Inter',sans-serif;font
       <div class="view-heading">
         <div>
           <h2>Calendario</h2>
-          <div class="hint">Julio a noviembre de 2026. Haz clic en un evento para editarlo.</div>
+          <div class="hint">Julio a noviembre de 2026. El día de hoy queda resaltado.</div>
         </div>
+        <button class="btn btn-sm" onclick="downloadView('calendario')">📷 Descargar imagen</button>
       </div>
       <div class="cal-grid" id="calWrap"></div>
+    </div>
+  </div>
+
+  <div class="view" data-view="gantt">
+    <div class="view-card">
+      <div class="view-heading">
+        <div>
+          <h2>Vista Gantt</h2>
+          <div class="hint">Cada libro agrupa sus encuentros en su propio eje de tiempo.</div>
+        </div>
+        <div class="legend" id="legendGantt"></div>
+      </div>
+      <div class="view-heading" style="margin-bottom:6px;">
+        <div></div>
+        <button class="btn btn-sm" onclick="downloadView('gantt')">📷 Descargar imagen</button>
+      </div>
+      <div class="gantt-scroll" id="ganttWrap"></div>
     </div>
   </div>
 
@@ -501,96 +386,21 @@ table.crono td.book-cell small{display:block;font-family:'Inter',sans-serif;font
       <div class="view-heading">
         <div>
           <h2>Kanban por fase</h2>
-          <div class="hint">Cada columna es una fase del ciclo; cada tarjeta, un libro en ese momento.</div>
+          <div class="hint">Cada columna es una fase del ciclo de lectura.</div>
         </div>
+        <button class="btn btn-sm" onclick="downloadView('kanban')">📷 Descargar imagen</button>
       </div>
       <div class="kanban-board" id="kanbanWrap"></div>
     </div>
   </div>
 
-  <div class="view" data-view="journey">
-    <div class="view-card">
-      <div class="view-heading">
-        <div>
-          <h2>Journey</h2>
-          <div class="hint">Vista narrativa del recorrido del club, de principio a fin.</div>
-        </div>
-      </div>
-      <div class="journey-note">
-        <span>💡</span>
-        <div><b>Vista preliminar.</b> Trae tus referencias en el próximo chat y afinamos el diseño de este journey juntos — por ahora usa los mismos datos del cronograma para que puedas ver la estructura.</div>
-      </div>
-      <div class="journey-path" id="journeyWrap"></div>
-    </div>
-  </div>
-
 </div>
 
-<div class="footer">Club de Lectura Oviedo — cronograma de trabajo interno</div>
+<div class="footer">Club de Lectura Oviedo — cronograma de consulta pública</div>
 
-<!-- Event Modal -->
-<div class="modal-overlay hidden" id="eventModalOverlay">
-  <div class="modal">
-    <h3 id="eventModalTitle">Editar evento</h3>
-    <form id="eventForm">
-      <div class="field">
-        <label>Libro / ciclo</label>
-        <select id="fBook"></select>
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Fase</label>
-          <select id="fPhase"></select>
-        </div>
-        <div class="field">
-          <label>Fecha</label>
-          <input type="date" id="fDate" required>
-        </div>
-      </div>
-      <div class="field" id="customPhaseField" style="display:none;">
-        <label>Nombre de la fase personalizada</label>
-        <input type="text" id="fPhaseCustom" placeholder="Ej: Actividad especial">
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Lugar (opcional)</label>
-          <input type="text" id="fLocation" placeholder="Ej: Fiesta del libro">
-        </div>
-        <div class="field">
-          <label>Nota (opcional)</label>
-          <input type="text" id="fNote" placeholder="Ej: cupo limitado">
-        </div>
-      </div>
-      <div class="field">
-        <label>Detalles (uno por línea)</label>
-        <textarea id="fDetails" placeholder="Conversación alrededor del libro&#10;Puesta en común de la experiencia de lectura"></textarea>
-      </div>
-      <div class="modal-actions">
-        <button type="button" class="btn btn-ghost danger" id="btnDeleteEvent">Eliminar</button>
-        <div class="spacer"></div>
-        <button type="button" class="btn btn-ghost" id="btnCancelEvent">Cancelar</button>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<!-- Manage Books Modal -->
-<div class="modal-overlay hidden" id="booksModalOverlay">
-  <div class="modal">
-    <h3>Gestionar libros</h3>
-    <div id="booksList"></div>
-    <button type="button" class="btn" id="btnAddBookRow" style="margin-top:4px;">+ Agregar libro</button>
-    <div class="modal-actions">
-      <div class="spacer"></div>
-      <button type="button" class="btn btn-primary" id="btnCloseBooks">Listo</button>
-    </div>
-  </div>
-</div>
-
-<!-- View Card (read-only quick view) -->
+<!-- View Card (read-only) -->
 <div class="modal-overlay hidden" id="viewCardOverlay">
-  <div class="modal vc-card">
+  <div class="vc-card">
     <div class="vc-colorbar" id="viewCardColorBar"></div>
     <div class="vc-body">
       <div class="vc-book" id="viewCardBook"></div>
@@ -601,59 +411,18 @@ table.crono td.book-cell small{display:block;font-family:'Inter',sans-serif;font
       <div class="vc-row vc-details" style="display:block;"><div id="viewCardDetails"></div></div>
     </div>
     <div class="vc-actions">
-      <button type="button" class="btn btn-primary" id="btnEditFromCard">✎ Editar</button>
+      <a class="btn btn-gold" id="viewCardGCal" target="_blank" rel="noopener">📆 Google Calendar</a>
+      <button type="button" class="btn" id="btnViewCardICS">⬇️ .ics</button>
+      <button type="button" class="btn" id="btnViewCardShare">🔗 Compartir</button>
+      <button type="button" class="btn" id="btnViewCardImage">📷 Imagen</button>
       <button type="button" class="btn btn-ghost" id="btnCloseViewCard">Cerrar</button>
-    </div>
-  </div>
-</div>
-
-<!-- Add Book (with events) Modal -->
-<div class="modal-overlay hidden" id="addBookModalOverlay">
-  <div class="modal" style="max-width:600px;">
-    <h3>Agregar libro</h3>
-    <div class="field-row">
-      <div class="field">
-        <label>Nombre del libro</label>
-        <input type="text" id="bookNameInput" placeholder="Ej: Cien años de soledad">
-      </div>
-      <div class="field">
-        <label>Autor (opcional)</label>
-        <input type="text" id="bookAuthorInput" placeholder="Ej: Gabriel García Márquez">
-      </div>
-    </div>
-    <label style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;display:block;margin:16px 0 8px;">Eventos del ciclo</label>
-    <div id="addBookEventsList"></div>
-    <button type="button" class="btn" id="btnAddBookEventRow">+ Agregar evento</button>
-    <div class="modal-actions">
-      <button type="button" class="btn btn-ghost" id="btnCancelAddBook">Cancelar</button>
-      <div class="spacer"></div>
-      <button type="button" class="btn btn-primary" id="btnSaveAddBook">Guardar libro</button>
-    </div>
-  </div>
-</div>
-
-<!-- Bulk Text Editor Modal -->
-<div class="modal-overlay hidden" id="textModalOverlay">
-  <div class="modal" style="max-width:640px;">
-    <h3>Editar todo el texto</h3>
-    <p style="font-size:12.5px;color:var(--muted);margin-bottom:12px;">
-      Edita libros y actividades como texto plano y guarda para aplicar los cambios a las 6 vistas.
-      Formato: <code>LIBRO:</code> nombre | autor · <code>FASE:</code> nombre | fecha (AAAA-MM-DD) | lugar | nota, seguido de líneas <code>- detalle</code>.
-      Usa <code>EVENTOS INDEPENDIENTES</code> para actividades que no pertenecen a un libro.
-    </p>
-    <div class="field">
-      <textarea id="fBulkText" style="min-height:360px;font-family:'Courier New',monospace;font-size:12.5px;line-height:1.5;"></textarea>
-    </div>
-    <div class="modal-actions">
-      <button type="button" class="btn btn-ghost" id="btnCancelBulk">Cancelar</button>
-      <div class="spacer"></div>
-      <button type="button" class="btn btn-primary" id="btnSaveBulk">Guardar cambios</button>
     </div>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 /* ================= DATA ================= */
 const PHASES = [
@@ -672,7 +441,7 @@ function phaseInfo(ev){
   return PHASES.find(p=>p.id===ev.phaseId) || CUSTOM_PHASE;
 }
 
-const INITIAL_DATA = {
+const DATA = {
   books:[
     {id:'b1', name:'Distancia de rescate', author:'Samantha Schweblin'},
     {id:'b2', name:'Libro 2', author:'Por definir'},
@@ -695,35 +464,74 @@ const INITIAL_DATA = {
     {id:'e13', bookId:'b3', phaseId:'segundo', date:'2026-11-18', details:['Discusión final del libro 3','Anuncios 2027','Actividad de cierre']},
   ]
 };
-
-let state = structuredClone(INITIAL_DATA);
-let editingEventId = null; // null = creating
+const state = DATA;
 
 /* ================= UTIL ================= */
 const MONTHS_ES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 const DOW_ES = ['L','M','X','J','V','S','D'];
-
-function fmtLong(dateStr){
-  const [y,m,d] = dateStr.split('-').map(Number);
-  return `${d} de ${MONTHS_ES[m-1]}`;
-}
-function fmtShort(dateStr){
-  const [y,m,d] = dateStr.split('-').map(Number);
-  return `${d} ${MONTHS_ES[m-1].slice(0,3)}`;
-}
-function uid(prefix){ return prefix + '_' + Math.random().toString(36).slice(2,9); }
+function fmtLong(dateStr){ const [y,m,d]=dateStr.split('-').map(Number); return `${d} de ${MONTHS_ES[m-1]}`; }
+function fmtShort(dateStr){ const [y,m,d]=dateStr.split('-').map(Number); return `${d} ${MONTHS_ES[m-1].slice(0,3)}`; }
+function addDaysISO(dateStr,n){ const d=new Date(dateStr+'T00:00:00'); d.setDate(d.getDate()+n); return d.toISOString().slice(0,10); }
 function bookById(id){ return state.books.find(b=>b.id===id); }
-function eventsSorted(){ return [...state.events].sort((a,b)=> a.date < b.date ? -1 : a.date > b.date ? 1 : 0); }
 function showToast(msg){
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(t._timer);
-  t._timer = setTimeout(()=>t.classList.remove('show'), 2200);
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._timer); t._timer = setTimeout(()=>t.classList.remove('show'), 2200);
 }
-function cssColor(varExpr){
-  // resolves "var(--x)" to actual computed color for contexts needing raw hex (e.g. inline styles already support var(), so mostly unused)
-  return varExpr;
+
+/* ================= FILTER ================= */
+let currentFilter = 'all';
+function getFilteredEvents(){
+  if(currentFilter==='all') return state.events;
+  if(currentFilter==='indep') return state.events.filter(e=>!e.bookId);
+  return state.events.filter(e=>e.bookId===currentFilter);
+}
+function getFilteredBooks(){
+  if(currentFilter==='all') return state.books;
+  if(currentFilter==='indep') return [];
+  return state.books.filter(b=>b.id===currentFilter);
+}
+function eventsSortedFiltered(){ return [...getFilteredEvents()].sort((a,b)=> a.date<b.date?-1:a.date>b.date?1:0); }
+
+function initFilterSelect(){
+  const sel = document.getElementById('filterSelect');
+  sel.innerHTML = `<option value="all">Todos los libros</option>` +
+    state.books.map(b=>`<option value="${b.id}">${b.name}</option>`).join('') +
+    (state.events.some(e=>!e.bookId) ? `<option value="indep">Eventos adicionales</option>` : '');
+  sel.addEventListener('change', ()=>{ currentFilter = sel.value; renderAll(); });
+}
+
+/* ================= NEXT EVENT BANNER ================= */
+function computeNextEvent(){
+  const today = new Date(); today.setHours(0,0,0,0);
+  const upcoming = [...state.events]
+    .filter(e => new Date(e.date+'T00:00:00') >= today)
+    .sort((a,b)=> a.date<b.date?-1:1);
+  return upcoming[0] || null;
+}
+function renderNextEventBanner(){
+  const el = document.getElementById('nextEventBanner');
+  const ev = computeNextEvent();
+  if(!ev){
+    el.innerHTML = `<div class="ne-inner"><span class="ne-ico">🎉</span><div class="ne-text"><b>El recorrido de este ciclo ha finalizado.</b><span>Gracias por acompañar al Club de Lectura Oviedo.</span></div></div>`;
+    return;
+  }
+  const info = phaseInfo(ev);
+  const book = bookById(ev.bookId);
+  const title = ev.phaseId==='custom' ? (ev.customPhaseName||'Evento') : info.name;
+  const today = new Date(); today.setHours(0,0,0,0);
+  const evDate = new Date(ev.date+'T00:00:00');
+  const diffDays = Math.round((evDate-today)/86400000);
+  const when = diffDays===0 ? '¡Es hoy!' : diffDays===1 ? 'Es mañana' : `Faltan ${diffDays} días`;
+  el.innerHTML = `
+    <div class="ne-inner" style="--ne-color:${info.color}">
+      <span class="ne-ico">📌</span>
+      <div class="ne-text">
+        <b>Próximo encuentro — ${when}</b>
+        <span>${title}${book?' · '+book.name:''} · ${fmtLong(ev.date)}${ev.location?' · 📍 '+ev.location:''}</span>
+      </div>
+      <button class="btn btn-gold" onclick="openViewCard('${ev.id}')">Ver detalles</button>
+    </div>`;
 }
 
 /* ================= RENDER ROOT ================= */
@@ -733,118 +541,17 @@ function renderAll(){
   renderTimeline();
   renderCalendar();
   renderKanban();
-  renderJourney();
 }
-
-/* ================= JOURNEY (winding path) ================= */
-const MONTH_COLORS = ['var(--c-inicial)','var(--c-primer)','var(--coral)','var(--gold)','var(--c-segundo)','var(--c-guia)'];
-const JOURNEY_ICONS = { inicial:'🎒', guia:'🗺️', primer:'📖', virtual:'🧭', segundo:'🏕️', custom:'✨' };
-
-function groupEventsByMonth(evs){
-  const map = new Map();
-  evs.forEach(ev=>{
-    const [y,m] = ev.date.split('-');
-    const key = `${y}-${m}`;
-    if(!map.has(key)) map.set(key, {year:+y, month:+m, events:[]});
-    map.get(key).events.push(ev);
-  });
-  return Array.from(map.values()).sort((a,b)=> a.year-b.year || a.month-b.month);
-}
-
-function renderJourney(){
-  const wrap = document.getElementById('journeyWrap');
-  const evs = eventsSorted();
-  if(evs.length===0){ wrap.innerHTML = '<p style="color:var(--muted)">No hay eventos todavía.</p>'; return; }
-
-  const groups = groupEventsByMonth(evs);
-  const total = evs.length;
-  let cum = 0;
-  let rowsHtml = '';
-
-  groups.forEach((g,gi)=>{
-    const monthColor = MONTH_COLORS[gi % MONTH_COLORS.length];
-    const reverse = gi % 2 === 1;
-    const isFirst = gi === 0, isLast = gi === groups.length - 1;
-    const sortedEvs = [...g.events].sort((a,b)=>a.date<b.date?-1:1);
-
-    const eventsHtml = sortedEvs.map(ev=>{
-      cum++;
-      const info = phaseInfo(ev);
-      const icon = JOURNEY_ICONS[ev.phaseId] || '✨';
-      const book = bookById(ev.bookId);
-      const title = ev.phaseId==='custom' ? (ev.customPhaseName||'Evento') : info.name;
-      return `
-        <div class="j-event j-node" onclick="openViewCard('${ev.id}')">
-          <div class="j-event-icon" style="background:${info.color}">${icon}</div>
-          <div class="j-event-date">${fmtShort(ev.date)}</div>
-          <div class="j-event-title">${book ? book.name : title}</div>
-        </div>`;
-    }).join('');
-
-    const pct = Math.round((cum/total)*100);
-    rowsHtml += `
-      <div class="j-row ${reverse?'reverse':''}">
-        ${isFirst ? '<div class="j-startend">Inicio</div>' : ''}
-        <div class="j-badge j-node" style="--jcolor:${monthColor};--jpct:${pct}">
-          <div class="j-badge-inner">${MONTHS_ES[g.month-1].slice(0,3)}<small>${g.year}</small></div>
-        </div>
-        <div class="j-events">${eventsHtml}</div>
-        ${isLast ? '<div class="j-startend end">Fin</div>' : ''}
-      </div>`;
-  });
-
-  wrap.innerHTML = `<div class="j-path-wrap" id="journeyPathWrap"><svg id="journeySvg" class="j-svg"><path id="journeyPathLine"></path></svg>${rowsHtml}</div>`;
-
-  requestAnimationFrame(()=>{
-    const journeyView = document.querySelector('.view[data-view="journey"]');
-    if(journeyView && journeyView.classList.contains('active')) drawJourneyPath();
-  });
-}
-
-function drawJourneyPath(){
-  const container = document.getElementById('journeyPathWrap');
-  const svg = document.getElementById('journeySvg');
-  const path = document.getElementById('journeyPathLine');
-  if(!container || !svg || !path) return;
-  const nodes = container.querySelectorAll('.j-node');
-  if(nodes.length < 2){ path.setAttribute('d',''); return; }
-  const contRect = container.getBoundingClientRect();
-  if(contRect.width === 0) return;
-  const pts = Array.from(nodes).map(n=>{
-    const r = n.getBoundingClientRect();
-    return [r.left - contRect.left + r.width/2, r.top - contRect.top + r.height/2];
-  });
-  const w = container.scrollWidth, h = container.scrollHeight;
-  svg.setAttribute('width', w);
-  svg.setAttribute('height', h);
-  svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-  const d = pts.map((p,i)=> (i===0?'M':'L') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
-  path.setAttribute('d', d);
-}
-
-let journeyResizeTimer = null;
-window.addEventListener('resize', ()=>{
-  clearTimeout(journeyResizeTimer);
-  journeyResizeTimer = setTimeout(()=>{
-    const journeyView = document.querySelector('.view[data-view="journey"]');
-    if(journeyView && journeyView.classList.contains('active')) drawJourneyPath();
-  }, 150);
-});
 
 /* ================= GANTT ================= */
-function addDaysISO(dateStr, n){
-  const d = new Date(dateStr);
-  d.setDate(d.getDate()+n);
-  return d.toISOString().slice(0,10);
-}
-
 function renderGantt(){
   const wrap = document.getElementById('ganttWrap');
   const legend = document.getElementById('legendGantt');
   legend.innerHTML = PHASES.map(p=>`<span><i style="background:${p.color}"></i>${p.name}</span>`).join('') +
     (state.events.some(e=>e.phaseId==='custom') ? `<span><i style="background:${CUSTOM_PHASE.color}"></i>Evento adicional</span>` : '');
 
-  if(state.events.length===0){ wrap.innerHTML = '<p style="color:var(--muted);padding:20px 0;">Aún no hay eventos. Agrega uno con el botón "+ Agregar evento".</p>'; return; }
+  const evs = getFilteredEvents();
+  if(evs.length===0){ wrap.innerHTML = '<p style="color:var(--muted);padding:20px 0;">No hay eventos para este filtro.</p>'; return; }
 
   const dates = state.events.map(e=>e.date).sort();
   const minD = new Date(dates[0]); minD.setDate(minD.getDate()-14);
@@ -852,7 +559,6 @@ function renderGantt(){
   const totalDays = (maxD-minD)/86400000;
   function pct(dateStr){ return (new Date(dateStr)-minD)/86400000/totalDays*100; }
 
-  // month background bands + header labels
   let bandsHtml='', monthsHtml='';
   let cursor = new Date(minD.getFullYear(), minD.getMonth(), 1);
   let tint=false;
@@ -868,8 +574,8 @@ function renderGantt(){
     cursor = nextMonth;
   }
 
-  function buildEventRows(evs){
-    const sorted = [...evs].sort((a,b)=> a.date<b.date?-1:1);
+  function buildEventRows(list){
+    const sorted = [...list].sort((a,b)=> a.date<b.date?-1:1);
     return sorted.map((ev,i)=>{
       const info = phaseInfo(ev);
       const startDate = i===0 ? addDaysISO(ev.date,-10) : sorted[i-1].date;
@@ -892,80 +598,64 @@ function renderGantt(){
   }
 
   let groupsHtml = '';
-  state.books.forEach(book=>{
-    const evs = state.events.filter(e=>e.bookId===book.id);
-    if(evs.length===0) return;
+  getFilteredBooks().forEach(book=>{
+    const bookEvs = evs.filter(e=>e.bookId===book.id);
+    if(bookEvs.length===0) return;
     groupsHtml += `
       <div class="gantt-book-group">
         <div class="gantt-book-title">${book.name}${book.author?`<small>· ${book.author}</small>`:''}</div>
-        <div class="gantt-book-rows">${buildEventRows(evs)}</div>
+        <div class="gantt-book-rows">${buildEventRows(bookEvs)}</div>
       </div>`;
   });
-  const indep = state.events.filter(e=>!e.bookId);
-  if(indep.length){
+  const indep = evs.filter(e=>!e.bookId);
+  if(indep.length && (currentFilter==='all' || currentFilter==='indep')){
     groupsHtml += `
       <div class="gantt-book-group">
         <div class="gantt-book-title">Eventos adicionales<small>· actividades del club</small></div>
         <div class="gantt-book-rows">${buildEventRows(indep)}</div>
       </div>`;
   }
-
-  wrap.innerHTML = `
-    <div class="gantt-chart">
-      <div class="gantt-bg">${bandsHtml}</div>
-      <div class="gantt-months">${monthsHtml}</div>
-      <div class="gantt-body">${groupsHtml}</div>
-    </div>`;
+  wrap.innerHTML = `<div class="gantt-chart"><div class="gantt-bg">${bandsHtml}</div><div class="gantt-months">${monthsHtml}</div><div class="gantt-body">${groupsHtml}</div></div>`;
 }
 
 /* ================= TABLE ================= */
 function renderTable(){
   const wrap = document.getElementById('tableWrap');
+  const books = getFilteredBooks();
   let head = `<tr><th>Libro</th>${PHASES.map(p=>`<th>${p.name}</th>`).join('')}</tr>`;
-  let rows = state.books.map(book=>{
+  let rows = books.map(book=>{
     let cells = PHASES.map(phase=>{
       const ev = state.events.find(e=>e.bookId===book.id && e.phaseId===phase.id);
-      if(!ev){
-        return `<td><div class="phase-empty" onclick="openEventModal(null,'${book.id}','${phase.id}')">+ Agregar</div></td>`;
-      }
+      if(!ev) return `<td><div class="phase-empty">Sin definir</div></td>`;
       const details = ev.details && ev.details.length ? `<ul>${ev.details.map(d=>`<li>${d}</li>`).join('')}</ul>` : '';
       const note = ev.note ? `<span class="flag" title="${ev.note}">✦</span>` : '';
       const loc = ev.location ? `<div class="loc-tag">📍 ${ev.location}</div>` : '';
-      return `<td>
-        <div class="phase-cell" style="background:${phase.soft}" onclick="openViewCard('${ev.id}')">
-          <div class="pdate">${fmtLong(ev.date)}${note}</div>
-          ${details}
-          ${loc}
-        </div>
-      </td>`;
+      return `<td><div class="phase-cell" style="background:${phase.soft}" onclick="openViewCard('${ev.id}')"><div class="pdate">${fmtLong(ev.date)}${note}</div>${details}${loc}</div></td>`;
     }).join('');
     return `<tr><td class="book-cell">${book.name}<small>${book.author||''}</small></td>${cells}</tr>`;
   }).join('');
 
-  const indep = state.events.filter(e=>!e.bookId);
+  const indep = getFilteredEvents().filter(e=>!e.bookId);
   let indepHtml = '';
   if(indep.length){
     const cards = indep.sort((a,b)=>a.date<b.date?-1:1).map(ev=>{
       const info = phaseInfo(ev);
       const details = ev.details && ev.details.length ? `<ul>${ev.details.map(d=>`<li>${d}</li>`).join('')}</ul>` : '';
       const loc = ev.location ? `<div class="loc-tag">📍 ${ev.location}</div>` : '';
-      return `<div class="phase-cell" style="background:${info.soft};min-width:200px;cursor:pointer" onclick="openViewCard('${ev.id}')">
-        <div class="pdate">${fmtLong(ev.date)}</div>
-        <div style="font-family:'Fraunces',serif;font-weight:600;margin:2px 0 4px;">${info.name}</div>
-        ${details}${loc}
-      </div>`;
+      return `<div class="phase-cell" style="background:${info.soft};min-width:200px;cursor:pointer" onclick="openViewCard('${ev.id}')"><div class="pdate">${fmtLong(ev.date)}</div><div style="font-family:'Fraunces',serif;font-weight:600;margin:2px 0 4px;">${info.name}</div>${details}${loc}</div>`;
     }).join('');
     indepHtml = `<div style="margin-top:22px;"><h4 style="font-size:13px;color:var(--primary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;">Eventos adicionales</h4><div style="display:flex;gap:12px;flex-wrap:wrap;">${cards}</div></div>`;
   }
 
-  wrap.innerHTML = `<table class="crono"><thead>${head}</thead><tbody>${rows}</tbody></table>${indepHtml}`;
+  const tableHtml = books.length ? `<table class="crono"><thead>${head}</thead><tbody>${rows}</tbody></table>` : '';
+  wrap.innerHTML = tableHtml + indepHtml || '<p style="color:var(--muted)">No hay eventos para este filtro.</p>';
 }
 
 /* ================= TIMELINE ================= */
 function renderTimeline(){
   const wrap = document.getElementById('timelineWrap');
-  const evs = eventsSorted();
-  if(evs.length===0){ wrap.innerHTML='<p style="color:var(--muted)">No hay eventos todavía.</p>'; return; }
+  const evs = eventsSortedFiltered();
+  if(evs.length===0){ wrap.innerHTML='<p style="color:var(--muted)">No hay eventos para este filtro.</p>'; return; }
   wrap.innerHTML = `<div class="timeline">` + evs.map(ev=>{
     const info = phaseInfo(ev);
     const book = bookById(ev.bookId);
@@ -987,7 +677,7 @@ function renderTimeline(){
 /* ================= CALENDAR ================= */
 function buildMonthGrid(year, monthIdx){
   const first = new Date(year, monthIdx, 1);
-  const startOffset = (first.getDay()+6)%7; // Monday=0
+  const startOffset = (first.getDay()+6)%7;
   const daysInMonth = new Date(year, monthIdx+1, 0).getDate();
   const cells = [];
   for(let i=0;i<startOffset;i++) cells.push(null);
@@ -995,35 +685,30 @@ function buildMonthGrid(year, monthIdx){
   while(cells.length % 7 !== 0) cells.push(null);
   return cells;
 }
-
 function renderCalendar(){
   const wrap = document.getElementById('calWrap');
-  if(state.events.length===0){ wrap.innerHTML = '<p style="color:var(--muted)">No hay eventos todavía.</p>'; return; }
+  const evs = getFilteredEvents();
+  if(evs.length===0){ wrap.innerHTML = '<p style="color:var(--muted)">No hay eventos para este filtro.</p>'; return; }
+  const today = new Date();
   const dates = state.events.map(e=>new Date(e.date));
   const minM = new Date(Math.min(...dates)); const maxM = new Date(Math.max(...dates));
   let blocks = '';
   let y = minM.getFullYear(), m = minM.getMonth();
   while(y < maxM.getFullYear() || (y===maxM.getFullYear() && m<=maxM.getMonth())){
     const cells = buildMonthGrid(y,m);
-    const monthEvents = state.events.filter(e=>{
-      const d = new Date(e.date); return d.getFullYear()===y && d.getMonth()===m;
-    });
+    const monthEvents = evs.filter(e=>{ const d = new Date(e.date); return d.getFullYear()===y && d.getMonth()===m; });
     const dayHtml = cells.map(d=>{
       if(d===null) return `<div class="day-cell empty"></div>`;
+      const isToday = today.getFullYear()===y && today.getMonth()===m && today.getDate()===d;
       const dayEvs = monthEvents.filter(e=> new Date(e.date).getDate()===d );
       const chips = dayEvs.map(ev=>{
         const info = phaseInfo(ev);
         const book = bookById(ev.bookId);
         return `<div class="chip" style="background:${info.color}" onclick="openViewCard('${ev.id}')">${book?book.name:'Evento'}<small>${info.name}</small></div>`;
       }).join('');
-      return `<div class="day-cell"><div class="day-num">${d}</div>${chips}</div>`;
+      return `<div class="day-cell ${isToday?'today':''}"><div class="day-num">${d}</div>${chips}</div>`;
     }).join('');
-    blocks += `
-      <div class="month-block">
-        <div class="month-head">${MONTHS_ES[m]} ${y}</div>
-        <div class="month-dow">${DOW_ES.map(d=>`<div>${d}</div>`).join('')}</div>
-        <div class="month-days">${dayHtml}</div>
-      </div>`;
+    blocks += `<div class="month-block"><div class="month-head">${MONTHS_ES[m]} ${y}</div><div class="month-dow">${DOW_ES.map(d=>`<div>${d}</div>`).join('')}</div><div class="month-days">${dayHtml}</div></div>`;
     m++; if(m>11){m=0;y++;}
   }
   wrap.innerHTML = blocks;
@@ -1033,25 +718,17 @@ function renderCalendar(){
 function renderKanban(){
   const wrap = document.getElementById('kanbanWrap');
   const allPhases = [...PHASES];
-  const hasCustom = state.events.some(e=>e.phaseId==='custom');
-  if(hasCustom) allPhases.push(CUSTOM_PHASE);
+  if(state.events.some(e=>e.phaseId==='custom')) allPhases.push(CUSTOM_PHASE);
+  const evs = getFilteredEvents();
 
   wrap.innerHTML = allPhases.map(phase=>{
-    const evs = state.events.filter(e=>e.phaseId===phase.id).sort((a,b)=>a.date<b.date?-1:1);
-    const cards = evs.map(ev=>{
+    const list = evs.filter(e=>e.phaseId===phase.id).sort((a,b)=>a.date<b.date?-1:1);
+    const cards = list.map(ev=>{
       const book = bookById(ev.bookId);
       const info = phaseInfo(ev);
-      return `<div class="kanban-card" style="--dot-color:${info.color}" onclick="openViewCard('${ev.id}')">
-        <div class="kdate">${fmtLong(ev.date)}</div>
-        <div class="ktitle">${book?book.name:'Evento independiente'}</div>
-      </div>`;
-    }).join('');
-    return `
-      <div class="kanban-col">
-        <div class="kanban-col-head"><i style="background:${phase.color}"></i><span>${phase.name}</span></div>
-        ${cards}
-        <button class="kanban-add" onclick="openEventModal(null,null,'${phase.id}')">+ Agregar</button>
-      </div>`;
+      return `<div class="kanban-card" style="--dot-color:${info.color}" onclick="openViewCard('${ev.id}')"><div class="kdate">${fmtLong(ev.date)}</div><div class="ktitle">${book?book.name:'Evento independiente'}</div></div>`;
+    }).join('') || '<p style="color:var(--muted);font-size:12px;">—</p>';
+    return `<div class="kanban-col"><div class="kanban-col-head"><i style="background:${phase.color}"></i><span>${phase.name}</span></div>${cards}</div>`;
   }).join('');
 }
 
@@ -1062,74 +739,12 @@ document.querySelectorAll('.tab').forEach(tab=>{
     document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
     tab.classList.add('active');
     document.querySelector(`.view[data-view="${tab.dataset.view}"]`).classList.add('active');
-    if(tab.dataset.view === 'journey'){
-      requestAnimationFrame(()=>requestAnimationFrame(drawJourneyPath));
-    }
   });
 });
 
-/* ================= EVENT MODAL ================= */
-const eventModalOverlay = document.getElementById('eventModalOverlay');
-const eventForm = document.getElementById('eventForm');
-const fBook = document.getElementById('fBook');
-const fPhase = document.getElementById('fPhase');
-const fDate = document.getElementById('fDate');
-const fNote = document.getElementById('fNote');
-const fLocation = document.getElementById('fLocation');
-const fDetails = document.getElementById('fDetails');
-const fPhaseCustom = document.getElementById('fPhaseCustom');
-const customPhaseField = document.getElementById('customPhaseField');
-
-function populateBookSelect(){
-  fBook.innerHTML = `<option value="">— Evento independiente —</option>` +
-    state.books.map(b=>`<option value="${b.id}">${b.name}</option>`).join('');
-}
-function populatePhaseSelect(){
-  fPhase.innerHTML = PHASES.map(p=>`<option value="${p.id}">${p.name}</option>`).join('') +
-    `<option value="custom">+ Fase / evento personalizado</option>`;
-}
-fPhase.addEventListener('change', ()=>{
-  customPhaseField.style.display = fPhase.value==='custom' ? 'flex' : 'none';
-});
-
-function openEventModal(eventId, presetBookId, presetPhaseId){
-  populateBookSelect();
-  populatePhaseSelect();
-  editingEventId = eventId;
-  const modalTitle = document.getElementById('eventModalTitle');
-  const btnDelete = document.getElementById('btnDeleteEvent');
-
-  if(eventId){
-    const ev = state.events.find(e=>e.id===eventId);
-    modalTitle.textContent = 'Editar evento';
-    fBook.value = ev.bookId || '';
-    fPhase.value = ev.phaseId;
-    customPhaseField.style.display = ev.phaseId==='custom' ? 'flex':'none';
-    fPhaseCustom.value = ev.customPhaseName || '';
-    fDate.value = ev.date;
-    fNote.value = ev.note || '';
-    fLocation.value = ev.location || '';
-    fDetails.value = (ev.details||[]).join('\n');
-    btnDelete.style.display = 'inline-flex';
-  } else {
-    modalTitle.textContent = 'Agregar evento';
-    fBook.value = presetBookId || '';
-    fPhase.value = presetPhaseId || PHASES[0].id;
-    customPhaseField.style.display = fPhase.value==='custom' ? 'flex':'none';
-    fPhaseCustom.value = '';
-    fDate.value = '';
-    fNote.value = '';
-    fLocation.value = '';
-    fDetails.value = '';
-    btnDelete.style.display = 'none';
-  }
-  eventModalOverlay.classList.remove('hidden');
-}
-function closeEventModal(){ eventModalOverlay.classList.add('hidden'); editingEventId = null; }
-
-/* ================= VIEW CARD (read-only) ================= */
+/* ================= VIEW CARD ================= */
 const viewCardOverlay = document.getElementById('viewCardOverlay');
-let currentViewCardEventId = null;
+let currentViewCardEvent = null;
 
 function openViewCard(eventId){
   const ev = state.events.find(e=>e.id===eventId);
@@ -1152,324 +767,114 @@ function openViewCard(eventId){
   else { noteRow.style.display='none'; }
 
   const detailsEl = document.getElementById('viewCardDetails');
-  detailsEl.innerHTML = (ev.details && ev.details.length)
-    ? `<ul>${ev.details.map(d=>`<li>${d}</li>`).join('')}</ul>`
-    : '<p class="muted-note">Sin detalles adicionales.</p>';
+  detailsEl.innerHTML = (ev.details && ev.details.length) ? `<ul>${ev.details.map(d=>`<li>${d}</li>`).join('')}</ul>` : '<p class="muted-note">Sin detalles adicionales.</p>';
 
-  currentViewCardEventId = eventId;
+  document.getElementById('viewCardGCal').href = googleCalendarUrl(ev);
+  currentViewCardEvent = ev;
   viewCardOverlay.classList.remove('hidden');
 }
-function closeViewCard(){ viewCardOverlay.classList.add('hidden'); currentViewCardEventId = null; }
-
+function closeViewCard(){ viewCardOverlay.classList.add('hidden'); currentViewCardEvent = null; }
 document.getElementById('btnCloseViewCard').addEventListener('click', closeViewCard);
 viewCardOverlay.addEventListener('click', (e)=>{ if(e.target===viewCardOverlay) closeViewCard(); });
-document.getElementById('btnEditFromCard').addEventListener('click', ()=>{
-  const id = currentViewCardEventId;
-  closeViewCard();
-  openEventModal(id);
+document.getElementById('btnViewCardICS').addEventListener('click', ()=>{ if(currentViewCardEvent) downloadICSSingle(currentViewCardEvent); });
+document.getElementById('btnViewCardShare').addEventListener('click', ()=>{ if(currentViewCardEvent) shareEvent(currentViewCardEvent); });
+document.getElementById('btnViewCardImage').addEventListener('click', ()=>{
+  const el = document.querySelector('#viewCardOverlay .vc-card');
+  downloadElementAsImage(el, 'evento-club-lectura-oviedo.png');
 });
 
-document.getElementById('btnCancelEvent').addEventListener('click', closeEventModal);
-eventModalOverlay.addEventListener('click', (e)=>{ if(e.target===eventModalOverlay) closeEventModal(); });
-
-eventForm.addEventListener('submit', (e)=>{
-  e.preventDefault();
-  const payload = {
-    bookId: fBook.value || null,
-    phaseId: fPhase.value,
-    customPhaseName: fPhase.value==='custom' ? (fPhaseCustom.value.trim() || 'Evento adicional') : undefined,
-    date: fDate.value,
-    note: fNote.value.trim() || undefined,
-    location: fLocation.value.trim() || undefined,
-    details: fDetails.value.split('\n').map(s=>s.trim()).filter(Boolean),
-  };
-  if(editingEventId){
-    const idx = state.events.findIndex(ev=>ev.id===editingEventId);
-    state.events[idx] = Object.assign({id:editingEventId}, payload);
-    showToast('Evento actualizado');
-  } else {
-    state.events.push(Object.assign({id:uid('e')}, payload));
-    showToast('Evento agregado');
-  }
-  closeEventModal();
-  renderAll();
-});
-
-document.getElementById('btnDeleteEvent').addEventListener('click', ()=>{
-  if(!editingEventId) return;
-  if(confirm('¿Eliminar este evento del cronograma?')){
-    state.events = state.events.filter(ev=>ev.id!==editingEventId);
-    closeEventModal();
-    renderAll();
-    showToast('Evento eliminado');
-  }
-});
-
-document.getElementById('btnAddEvent').addEventListener('click', ()=>openEventModal(null));
-
-/* ================= BOOKS MODAL ================= */
-const booksModalOverlay = document.getElementById('booksModalOverlay');
-function renderBooksList(){
-  const list = document.getElementById('booksList');
-  list.innerHTML = state.books.map(b=>`
-    <div class="book-list-item" data-id="${b.id}">
-      <input type="text" class="bname" value="${b.name}" placeholder="Nombre del libro">
-      <input type="text" class="bauthor" value="${b.author||''}" placeholder="Autor (opcional)">
-      <button type="button" class="icon-btn" onclick="deleteBook('${b.id}')" title="Eliminar libro">✕</button>
-    </div>`).join('');
+/* ================= CALENDAR EXPORT (.ics) ================= */
+function dateToICSDate(dateStr){ return dateStr.replace(/-/g,''); }
+function icsEscape(s){ return String(s).replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\n/g,'\\n'); }
+function eventToICS(ev){
+  const info = phaseInfo(ev);
+  const book = bookById(ev.bookId);
+  const title = (ev.phaseId==='custom'?(ev.customPhaseName||'Evento'):info.name) + (book?` — ${book.name}`:'');
+  const desc = (ev.details||[]).join('\n');
+  const loc = ev.location || '';
+  const dtstart = dateToICSDate(ev.date);
+  const dtend = dateToICSDate(addDaysISO(ev.date,1));
+  const now = new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+  return ['BEGIN:VEVENT',
+    `UID:clublecturaoviedo-${ev.id}@oviedo`,
+    `DTSTAMP:${now}`,
+    `DTSTART;VALUE=DATE:${dtstart}`,
+    `DTEND;VALUE=DATE:${dtend}`,
+    `SUMMARY:${icsEscape(title)}`,
+    desc?`DESCRIPTION:${icsEscape(desc)}`:'',
+    loc?`LOCATION:${icsEscape(loc)}`:'',
+    'END:VEVENT'
+  ].filter(Boolean).join('\r\n');
 }
-function deleteBook(id){
-  if(confirm('¿Eliminar este libro y todos sus eventos asociados?')){
-    state.books = state.books.filter(b=>b.id!==id);
-    state.events = state.events.filter(e=>e.bookId!==id);
-    renderBooksList();
-    renderAll();
-    showToast('Libro eliminado');
-  }
-}
-function saveBooksFromList(){
-  document.querySelectorAll('#booksList .book-list-item').forEach(row=>{
-    const id = row.dataset.id;
-    const book = bookById(id);
-    if(book){
-      book.name = row.querySelector('.bname').value.trim() || book.name;
-      book.author = row.querySelector('.bauthor').value.trim();
-    }
-  });
-}
-document.getElementById('btnManageBooks').addEventListener('click', ()=>{
-  renderBooksList();
-  booksModalOverlay.classList.remove('hidden');
-});
-document.getElementById('btnAddBookRow').addEventListener('click', ()=>{
-  saveBooksFromList();
-  state.books.push({id:uid('b'), name:'Nuevo libro', author:''});
-  renderBooksList();
-});
-document.getElementById('btnCloseBooks').addEventListener('click', ()=>{
-  saveBooksFromList();
-  booksModalOverlay.classList.add('hidden');
-  renderAll();
-  showToast('Libros actualizados');
-});
-booksModalOverlay.addEventListener('click', (e)=>{ if(e.target===booksModalOverlay){ saveBooksFromList(); booksModalOverlay.classList.add('hidden'); renderAll(); } });
-
-/* ================= ADD BOOK (with events) ================= */
-const addBookModalOverlay = document.getElementById('addBookModalOverlay');
-const addBookEventsList = document.getElementById('addBookEventsList');
-
-function addBookEventRow(prefillPhaseId){
-  const row = document.createElement('div');
-  row.className = 'book-event-row';
-  row.innerHTML = `
-    <select class="be-phase">
-      ${PHASES.map(p=>`<option value="${p.id}" ${p.id===prefillPhaseId?'selected':''}>${p.name}</option>`).join('')}
-      <option value="custom">+ Personalizada</option>
-    </select>
-    <input type="text" class="be-custom" placeholder="Nombre del evento" style="display:none;">
-    <input type="date" class="be-date">
-    <input type="text" class="be-detail" placeholder="Detalle breve (opcional)">
-    <button type="button" class="icon-btn be-remove" title="Quitar">✕</button>
-  `;
-  row.querySelector('.be-phase').addEventListener('change', (e)=>{
-    row.querySelector('.be-custom').style.display = e.target.value==='custom' ? 'block' : 'none';
-  });
-  row.querySelector('.be-remove').addEventListener('click', ()=> row.remove());
-  addBookEventsList.appendChild(row);
-}
-
-document.getElementById('btnAddBook').addEventListener('click', ()=>{
-  document.getElementById('bookNameInput').value = '';
-  document.getElementById('bookAuthorInput').value = '';
-  addBookEventsList.innerHTML = '';
-  ['guia','primer','virtual','segundo'].forEach(pid=>addBookEventRow(pid));
-  addBookModalOverlay.classList.remove('hidden');
-});
-document.getElementById('btnAddBookEventRow').addEventListener('click', ()=>addBookEventRow());
-document.getElementById('btnCancelAddBook').addEventListener('click', ()=>addBookModalOverlay.classList.add('hidden'));
-addBookModalOverlay.addEventListener('click', (e)=>{ if(e.target===addBookModalOverlay) addBookModalOverlay.classList.add('hidden'); });
-
-document.getElementById('btnSaveAddBook').addEventListener('click', ()=>{
-  const name = document.getElementById('bookNameInput').value.trim() || 'Nuevo libro';
-  const author = document.getElementById('bookAuthorInput').value.trim();
-  const newBook = {id:uid('b'), name, author};
-  let addedCount = 0;
-
-  const rows = Array.from(addBookEventsList.querySelectorAll('.book-event-row'));
-  const tempEvents = [];
-  for(const row of rows){
-    const date = row.querySelector('.be-date').value;
-    if(!date) continue;
-    const phaseId = row.querySelector('.be-phase').value;
-    const customName = row.querySelector('.be-custom').value.trim();
-    const detail = row.querySelector('.be-detail').value.trim();
-    tempEvents.push({
-      id: uid('e'), bookId: newBook.id, phaseId,
-      customPhaseName: phaseId==='custom' ? (customName || 'Evento adicional') : undefined,
-      date, details: detail ? [detail] : []
-    });
-    addedCount++;
-  }
-
-  state.books.push(newBook);
-  state.events.push(...tempEvents);
-  addBookModalOverlay.classList.add('hidden');
-  renderAll();
-  showToast(addedCount ? `Libro agregado con ${addedCount} evento(s)` : 'Libro agregado — edita sus eventos desde cualquier vista');
-});
-
-/* ================= EXPORT / IMPORT / RESET / PRINT ================= */
-document.getElementById('btnExport').addEventListener('click', ()=>{
-  const blob = new Blob([JSON.stringify(state, null, 2)], {type:'application/json'});
+function triggerDownload(content, filename, mime){
+  const blob = new Blob([content], {type:mime});
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'cronograma-club-lectura-oviedo.json';
+  const a = document.createElement('a'); a.href=url; a.download=filename;
   document.body.appendChild(a); a.click(); a.remove();
   URL.revokeObjectURL(url);
-  showToast('Cronograma exportado');
-});
+}
+function downloadICSSingle(ev){
+  const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Club de Lectura Oviedo//ES', eventToICS(ev), 'END:VCALENDAR'].join('\r\n');
+  triggerDownload(ics, 'evento-club-lectura-oviedo.ics', 'text/calendar');
+  showToast('Evento descargado');
+}
+function downloadICSAll(){
+  const body = state.events.map(eventToICS).join('\r\n');
+  const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Club de Lectura Oviedo//ES', body, 'END:VCALENDAR'].join('\r\n');
+  triggerDownload(ics, 'cronograma-club-lectura-oviedo.ics', 'text/calendar');
+  showToast('Cronograma completo descargado');
+}
+function googleCalendarUrl(ev){
+  const info = phaseInfo(ev);
+  const book = bookById(ev.bookId);
+  const title = (ev.phaseId==='custom'?(ev.customPhaseName||'Evento'):info.name) + (book?` — ${book.name}`:'');
+  const dtstart = dateToICSDate(ev.date);
+  const dtend = dateToICSDate(addDaysISO(ev.date,1));
+  const params = new URLSearchParams({
+    action:'TEMPLATE', text:title, dates:`${dtstart}/${dtend}`,
+    details:(ev.details||[]).join('\n'), location: ev.location||''
+  });
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
+document.getElementById('btnSubscribeAll').addEventListener('click', downloadICSAll);
 
-document.getElementById('btnImport').addEventListener('click', ()=>document.getElementById('fileImport').click());
-document.getElementById('fileImport').addEventListener('change', (e)=>{
-  const file = e.target.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = (evt)=>{
-    try{
-      const parsed = JSON.parse(evt.target.result);
-      if(!parsed.books || !parsed.events) throw new Error('formato inválido');
-      state = parsed;
-      renderAll();
-      showToast('Cronograma importado correctamente');
-    }catch(err){
-      alert('El archivo no tiene un formato válido de cronograma.');
-    }
-  };
-  reader.readAsText(file);
-  e.target.value = '';
-});
-
-document.getElementById('btnReset').addEventListener('click', ()=>{
-  if(confirm('¿Restaurar el cronograma a los datos originales? Se perderán los cambios no exportados.')){
-    state = structuredClone(INITIAL_DATA);
-    renderAll();
-    showToast('Datos originales restaurados');
+/* ================= SHARE ================= */
+function shareEvent(ev){
+  const info = phaseInfo(ev);
+  const book = bookById(ev.bookId);
+  const title = ev.phaseId==='custom' ? (ev.customPhaseName||'Evento') : info.name;
+  const text = `📖 Club de Lectura Oviedo\n${title}${book?' — '+book.name:''}\n📅 ${fmtLong(ev.date)}${ev.location?'\n📍 '+ev.location:''}`;
+  if(navigator.share){
+    navigator.share({title:'Club de Lectura Oviedo', text}).catch(()=>{});
+  } else if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(()=>showToast('Copiado al portapapeles')).catch(()=>showToast('No se pudo copiar'));
+  } else {
+    showToast('No se pudo compartir en este navegador');
   }
-});
+}
 
+/* ================= IMAGE DOWNLOAD ================= */
+function downloadElementAsImage(el, filename){
+  if(!el || typeof html2canvas === 'undefined'){ showToast('No se pudo generar la imagen'); return; }
+  showToast('Generando imagen…');
+  html2canvas(el, {backgroundColor:'#ffffff', scale:2}).then(canvas=>{
+    const link = document.createElement('a');
+    link.download = filename;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  }).catch(()=> showToast('No se pudo generar la imagen'));
+}
+function downloadView(viewName){
+  const el = document.querySelector(`.view[data-view="${viewName}"] .view-card`);
+  downloadElementAsImage(el, `cronograma-${viewName}-club-lectura-oviedo.png`);
+}
+
+/* ================= PRINT ================= */
 document.getElementById('btnPrint').addEventListener('click', ()=>window.print());
 
-/* ================= BULK TEXT EDITOR ================= */
-const textModalOverlay = document.getElementById('textModalOverlay');
-const fBulkText = document.getElementById('fBulkText');
-
-function phaseLabelFor(ev){
-  return ev.phaseId==='custom' ? `Personalizada: ${ev.customPhaseName||'Evento adicional'}` : phaseInfo(ev).name;
-}
-
-function serializeState(){
-  const lines = [];
-  state.books.forEach(book=>{
-    lines.push(`LIBRO: ${book.name} | ${book.author||''}`);
-    state.events.filter(e=>e.bookId===book.id).sort((a,b)=>a.date<b.date?-1:1).forEach(ev=>{
-      lines.push(`FASE: ${phaseLabelFor(ev)} | ${ev.date} | ${ev.location||''} | ${ev.note||''}`);
-      (ev.details||[]).forEach(d=>lines.push(`- ${d}`));
-    });
-    lines.push('');
-  });
-  const indep = state.events.filter(e=>!e.bookId);
-  if(indep.length){
-    lines.push('EVENTOS INDEPENDIENTES');
-    indep.sort((a,b)=>a.date<b.date?-1:1).forEach(ev=>{
-      lines.push(`FASE: ${phaseLabelFor(ev)} | ${ev.date} | ${ev.location||''} | ${ev.note||''}`);
-      (ev.details||[]).forEach(d=>lines.push(`- ${d}`));
-    });
-  }
-  return lines.join('\n');
-}
-
-function parseBulkText(text){
-  const lines = text.split('\n');
-  const newBooks = [];
-  const newEvents = [];
-  let currentBook = null;
-  let currentEvent = null;
-  let independentMode = false;
-
-  lines.forEach(raw=>{
-    const line = raw.trim();
-    if(!line) return;
-    if(/^LIBRO:/i.test(line)){
-      const rest = line.replace(/^LIBRO:/i,'').trim();
-      const [name, author] = rest.split('|').map(s=>s?.trim()||'');
-      currentBook = {id:uid('b'), name: name||'Libro sin título', author: author||''};
-      newBooks.push(currentBook);
-      independentMode = false;
-      currentEvent = null;
-    } else if(/^EVENTOS INDEPENDIENTES/i.test(line)){
-      currentBook = null;
-      independentMode = true;
-      currentEvent = null;
-    } else if(/^FASE:/i.test(line)){
-      const rest = line.replace(/^FASE:/i,'').trim();
-      const parts = rest.split('|').map(s=>s.trim());
-      const label = parts[0]||'';
-      const date = parts[1]||'';
-      const location = parts[2]||'';
-      const note = parts[3]||'';
-      let phaseId, customPhaseName;
-      if(/^Personalizada:/i.test(label)){
-        phaseId = 'custom';
-        customPhaseName = label.replace(/^Personalizada:/i,'').trim() || 'Evento adicional';
-      } else {
-        const match = PHASES.find(p=>p.name.toLowerCase()===label.toLowerCase());
-        if(match){ phaseId = match.id; }
-        else { phaseId = 'custom'; customPhaseName = label || 'Evento adicional'; }
-      }
-      currentEvent = {
-        id: uid('e'),
-        bookId: independentMode ? null : (currentBook ? currentBook.id : null),
-        phaseId, customPhaseName,
-        date, location: location||undefined, note: note||undefined,
-        details: []
-      };
-      newEvents.push(currentEvent);
-    } else if(line.startsWith('-')){
-      if(currentEvent){ currentEvent.details.push(line.slice(1).trim()); }
-    }
-  });
-
-  // basic validation
-  const badDate = newEvents.find(e=>!/^\d{4}-\d{2}-\d{2}$/.test(e.date));
-  if(badDate){ throw new Error(`Fecha inválida en la fase "${phaseLabelFor(badDate)}": "${badDate.date}". Usa el formato AAAA-MM-DD.`); }
-
-  return {books:newBooks, events:newEvents};
-}
-
-document.getElementById('btnEditAllText').addEventListener('click', ()=>{
-  fBulkText.value = serializeState();
-  textModalOverlay.classList.remove('hidden');
-});
-document.getElementById('btnCancelBulk').addEventListener('click', ()=>{
-  textModalOverlay.classList.add('hidden');
-});
-textModalOverlay.addEventListener('click', (e)=>{ if(e.target===textModalOverlay) textModalOverlay.classList.add('hidden'); });
-document.getElementById('btnSaveBulk').addEventListener('click', ()=>{
-  try{
-    const parsed = parseBulkText(fBulkText.value);
-    if(parsed.books.length===0 && parsed.events.length===0){
-      if(!confirm('El texto quedó vacío, ¿guardar de todas formas y borrar el cronograma?')) return;
-    }
-    state = parsed;
-    textModalOverlay.classList.add('hidden');
-    renderAll();
-    showToast('Texto aplicado a las 6 vistas');
-  }catch(err){
-    alert('No se pudo interpretar el texto:\n' + err.message);
-  }
-});
-
 /* ================= INIT ================= */
+initFilterSelect();
+renderNextEventBanner();
 renderAll();
 </script>
 </body>
